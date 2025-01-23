@@ -36,7 +36,7 @@ export const useActiveHost = () => {
           return "";
         }
       },
-      refetchInterval: 3000,
+      refetchInterval: 3333,
     })),
   });
 

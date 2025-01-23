@@ -26,7 +26,7 @@ const selectConversationCard = async (page: Page, index: number) => {
   await expect(panel).not.toBeVisible();
 
   await page.waitForURL(`/conversations/${index + 1}`);
-  expect(page.url()).toBe(`http://localhost:3001/conversations/${index + 1}`);
+  expect(page.url()).toBe(`http://localhost:3334/conversations/${index + 1}`);
 };
 
 test.beforeEach(async ({ page }) => {
@@ -63,7 +63,7 @@ test("redirect to /conversation with the session id as a path param when clickin
   expect(panel).not.toBeVisible();
 
   await page.waitForURL("/conversations/1");
-  expect(page.url()).toBe("http://localhost:3001/conversations/1");
+  expect(page.url()).toBe("http://localhost:3334/conversations/1");
 });
 
 test("redirect to the home screen if the current session was deleted", async ({
@@ -130,7 +130,7 @@ test("display the conversation details during a conversation", async ({
   await expect(panel).not.toBeVisible();
 
   await page.waitForURL("/conversations/1");
-  expect(page.url()).toBe("http://localhost:3001/conversations/1");
+  expect(page.url()).toBe("http://localhost:3334/conversations/1");
 
   const conversationDetails = page.getByTestId("conversation-card");
 

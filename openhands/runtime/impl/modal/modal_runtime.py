@@ -74,7 +74,7 @@ class ModalRuntime(ActionExecutionClient):
             )
 
         # This value is arbitrary as it's private to the container
-        self.container_port = 3000
+        self.container_port = 3333
 
         self.status_callback = status_callback
         self.base_container_image_id = self.config.sandbox.base_container_image

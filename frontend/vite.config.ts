@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const {
     VITE_BACKEND_HOST = "127.0.0.1:3333",
     VITE_USE_TLS = "false",
-    VITE_FRONTEND_PORT = "3001",
+    VITE_FRONTEND_PORT = "3334",
     VITE_INSECURE_SKIP_VERIFY = "false",
   } = loadEnv(mode, process.cwd());
 

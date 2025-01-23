@@ -31,6 +31,7 @@ starcoder2:latest               f67ae0f64584    1.7 GB  19 hours ago
 ## 使用 Docker 运行 OpenHands
 
 ### 启动 OpenHands
+
 使用[此处](../getting-started)的说明使用 Docker 启动 OpenHands。
 但在运行 `docker run` 时，你需要添加一些额外的参数：
 
@@ -44,14 +45,13 @@ docker run # ...
 LLM_OLLAMA_BASE_URL 是可选的。如果设置了它，它将用于在 UI 中显示
 可用的已安装模型。
 
-
 ### 配置 Web 应用程序
 
 在运行 `openhands` 时，你需要在 OpenHands UI 的设置中设置以下内容：
+
 - 模型设置为 "ollama/&lt;model-name&gt;"
 - 基础 URL 设置为 `http://host.docker.internal:11434`
 - API 密钥是可选的，你可以使用任何字符串，例如 `ollama`。
-
 
 ## 在开发模式下运行 OpenHands
 
@@ -70,7 +70,7 @@ ollama_base_url="http://localhost:11434"
 
 ```
 
-完成！现在你可以通过 `make run` 启动 OpenHands。你现在应该能够连接到 `http://localhost:3000/`
+完成！现在你可以通过 `make run` 启动 OpenHands。你现在应该能够连接到 `http://localhost:3333/`
 
 ### 配置 Web 应用程序
 
@@ -139,17 +139,17 @@ docker ps # 获取正在运行的 docker 容器列表，为了最准确的测试
 docker exec [CONTAINER ID] curl http://host.docker.internal:11434/api/generate -d '{"model":"[NAME]","prompt":"hi"}'
 ```
 
-
 # 使用 LM Studio 的本地 LLM
 
 设置 LM Studio 的步骤：
+
 1. 打开 LM Studio
 2. 转到 Local Server 选项卡。
 3. 点击 "Start Server" 按钮。
 4. 从下拉列表中选择要使用的模型。
 
-
 设置以下配置：
+
 ```bash
 LLM_MODEL="openai/lmstudio"
 LLM_BASE_URL="http://localhost:1234/v1"
@@ -166,7 +166,7 @@ docker run # ...
     # ...
 ```
 
-你现在应该能够连接到 `http://localhost:3000/`
+你现在应该能够连接到 `http://localhost:3333/`
 
 在开发环境中，你可以在 `config.toml` 文件中设置以下配置：
 
@@ -180,7 +180,7 @@ base_url="http://localhost:1234/v1"
 custom_llm_provider="openai"
 ```
 
-完成！现在你可以通过 `make run` 启动 OpenHands，无需 Docker。你现在应该能够连接到 `http://localhost:3000/`
+完成！现在你可以通过 `make run` 启动 OpenHands，无需 Docker。你现在应该能够连接到 `http://localhost:3333/`
 
 # 注意
 

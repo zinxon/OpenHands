@@ -68,7 +68,7 @@ def get_config(
                 'REDDIT': f'{base_url}:9999',
                 'GITLAB': f'{base_url}:8023',
                 'WIKIPEDIA': f'{base_url}:8888/wikipedia_en_all_maxi_2022-05/A/User:The_other_Kiwix_guy/Landing',
-                'MAP': f'{base_url}:3000',
+                'MAP': f'{base_url}:3333',
                 'HOMEPAGE': f'{base_url}:4399',
             },
         ),

@@ -25,7 +25,7 @@ Next run `poetry shell` (So you don't have to repeat `poetry run`)
 ## Start the Server
 
 ```sh
-uvicorn openhands.server.listen:app --reload --port 3000
+uvicorn openhands.server.listen:app --reload --port 3333
 ```
 
 ## Test the Server
@@ -33,7 +33,7 @@ uvicorn openhands.server.listen:app --reload --port 3000
 You can use [`websocat`](https://github.com/vi/websocat) to test the server.
 
 ```sh
-websocat ws://127.0.0.1:3000/ws
+websocat ws://127.0.0.1:3333/ws
 {"action": "start", "args": {"task": "write a bash script that prints hello"}}
 ```
 
@@ -49,59 +49,59 @@ WORKSPACE_BASE=/path/to/your/workspace # Default absolute path to workspace
 
 There are two types of messages that can be sent to, or received from, the server:
 
-* Actions
-* Observations
+- Actions
+- Observations
 
 ### Actions
 
 An action has three parts:
 
-* `action`: The action to be taken
-* `args`: The arguments for the action
-* `message`: A friendly message that can be put in the chat log
+- `action`: The action to be taken
+- `args`: The arguments for the action
+- `message`: A friendly message that can be put in the chat log
 
 There are several kinds of actions. Their arguments are listed below.
 This list may grow over time.
 
-* `initialize` - initializes the agent. Only sent by client.
-  * `model` - the name of the model to use
-  * `directory` - the path to the workspace
-  * `agent_cls` - the class of the agent to use
-* `start` - starts a new development task. Only sent by the client.
-  * `task` - the task to start
-* `read` - reads the content of a file.
-  * `path` - the path of the file to read
-* `write` - writes the content to a file.
-  * `path` - the path of the file to write
-  * `content` - the content to write to the file
-* `run` - runs a command.
-  * `command` - the command to run
-* `browse` - opens a web page.
-  * `url` - the URL to open
-* `think` - Allows the agent to make a plan, set a goal, or record thoughts
-  * `thought` - the thought to record
-* `finish` - agent signals that the task is completed
+- `initialize` - initializes the agent. Only sent by client.
+  - `model` - the name of the model to use
+  - `directory` - the path to the workspace
+  - `agent_cls` - the class of the agent to use
+- `start` - starts a new development task. Only sent by the client.
+  - `task` - the task to start
+- `read` - reads the content of a file.
+  - `path` - the path of the file to read
+- `write` - writes the content to a file.
+  - `path` - the path of the file to write
+  - `content` - the content to write to the file
+- `run` - runs a command.
+  - `command` - the command to run
+- `browse` - opens a web page.
+  - `url` - the URL to open
+- `think` - Allows the agent to make a plan, set a goal, or record thoughts
+  - `thought` - the thought to record
+- `finish` - agent signals that the task is completed
 
 ### Observations
 
 An observation has four parts:
 
-* `observation`: The observation type
-* `content`: A string representing the observed data
-* `extras`: additional structured data
-* `message`: A friendly message that can be put in the chat log
+- `observation`: The observation type
+- `content`: A string representing the observed data
+- `extras`: additional structured data
+- `message`: A friendly message that can be put in the chat log
 
 There are several kinds of observations. Their extras are listed below.
 This list may grow over time.
 
-* `read` - the content of a file
-  * `path` - the path of the file read
-* `browse` - the HTML content of a url
-  * `url` - the URL opened
-* `run` - the output of a command
-  * `command` - the command run
-  * `exit_code` - the exit code of the command
-* `chat` - a message from the user
+- `read` - the content of a file
+  - `path` - the path of the file read
+- `browse` - the HTML content of a url
+  - `url` - the URL opened
+- `run` - the output of a command
+  - `command` - the command run
+  - `exit_code` - the exit code of the command
+- `chat` - a message from the user
 
 ## Server Components
 
@@ -146,33 +146,40 @@ The `listen.py` file is the main server file that sets up the FastAPI applicatio
 ## Workflow Description
 
 1. **Server Initialization**:
+
    - The FastAPI application is created and configured in `listen.py`.
    - CORS middleware and static file serving are set up.
    - The `SessionManager` is initialized.
 
 2. **Client Connection**:
+
    - When a client connects via WebSocket, a new `Session` is created or an existing one is restarted.
    - The `Session` initializes an `AgentSession`, which sets up the runtime environment and agent controller.
 
 3. **Agent Initialization**:
+
    - The client sends an initialization request.
    - The server creates and configures the agent based on the provided parameters.
    - The runtime environment is set up, and the agent controller is initialized.
 
 4. **Event Handling**:
+
    - The `Session` manages the event stream between the client and the agent.
    - Events from the client are dispatched to the agent.
    - Observations from the agent are sent back to the client.
 
 5. **File Operations**:
+
    - The server handles file uploads, ensuring they meet size and type restrictions.
    - File read and write operations are performed through the runtime environment.
 
 6. **Security Analysis**:
+
    - If configured, a security analyzer is initialized for each session.
    - Security-related API requests are forwarded to the security analyzer.
 
 7. **Session Management**:
+
    - The `SessionManager` periodically cleans up inactive sessions.
    - It also handles sending messages to specific sessions when needed.
 

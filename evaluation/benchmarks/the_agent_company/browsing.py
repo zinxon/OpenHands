@@ -191,7 +191,7 @@ def pre_login(
     ]
 
     rocketchat_login_actions = [
-        GotoAction('http://the-agent-company.com:3000'),
+        GotoAction('http://the-agent-company.com:3333'),
         NoopAction(1000),
         InputAction("textbox '', clickable, focused", 'theagentcompany'),
         NoopAction(1000),

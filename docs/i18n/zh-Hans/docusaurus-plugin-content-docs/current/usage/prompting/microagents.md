@@ -14,26 +14,31 @@ OpenHands 使用专门的微代理来高效处理特定任务和上下文。这�
 ## 可用的微代理
 
 ### GitHub 代理
+
 **文件**：`github.md`
 **触发词**：`github`、`git`
 
 GitHub 代理专门用于 GitHub API 交互和仓库管理。它：
+
 - 可以访问用于 API 身份验证的 `GITHUB_TOKEN`
 - 遵循严格的仓库交互准则
 - 处理分支管理和拉取请求
 - 使用 GitHub API 而不是网页浏览器交互
 
 主要特点：
+
 - 分支保护（防止直接推送到 main/master）
 - 自动创建 PR
 - Git 配置管理
 - 以 API 为先的 GitHub 操作方式
 
 ### NPM 代理
+
 **文件**：`npm.md`
 **触发词**：`npm`
 
 专门处理 npm 包管理，特别关注：
+
 - 非交互式 shell 操作
 - 使用 Unix 'yes' 命令自动处理确认
 - 包安装自动化
@@ -47,8 +52,8 @@ GitHub 代理专门用于 GitHub API 交互和仓库管理。它：
 name: agent_name
 agent: CodeActAgent
 triggers:
-- trigger_word1
-- trigger_word2
+  - trigger_word1
+  - trigger_word2
 ---
 
 微代理的指令和功能...
@@ -66,6 +71,7 @@ triggers:
 ## 集成
 
 微代理自动集成到 OpenHands 的工作流程中。它们：
+
 - 监视传入的命令是否包含触发词
 - 在检测到相关触发词时激活
 - 应用其专门的知识和能力
@@ -92,6 +98,7 @@ yes | npm install package-name
 ### 1. 规划你的微代理
 
 在创建微代理之前，请考虑：
+
 - 它将解决什么具体问题或用例？
 - 它应该具有什么独特的能力或知识？
 - 什么触发词适合激活它？
@@ -106,25 +113,29 @@ yes | npm install package-name
 你的微代理文件必须包括：
 
 1. **Front Matter**：文件开头的 YAML 元数据：
+
 ```markdown
 ---
 name: your_agent_name
 agent: CodeActAgent
 triggers:
-- trigger_word1
-- trigger_word2
+  - trigger_word1
+  - trigger_word2
 ---
 ```
 
 2. **指令**：明确、具体的代理行为准则：
+
 ```markdown
 你负责 [特定任务/领域]。
 
 主要职责：
+
 1. [职责 1]
 2. [职责 2]
 
 准则：
+
 - [准则 1]
 - [准则 2]
 
@@ -144,6 +155,7 @@ triggers:
 ### 5. 测试你的微代理
 
 在提交之前：
+
 1. 用各种提示测试代理
 2. 验证触发词是否正确激活代理
 3. 确保指令清晰全面
@@ -153,28 +165,31 @@ triggers:
 
 这是一个新微代理的模板：
 
-```markdown
+````markdown
 ---
 name: docker
 agent: CodeActAgent
 triggers:
-- docker
-- container
+  - docker
+  - container
 ---
 
 你负责 Docker 容器管理和 Dockerfile 创建。
 
 主要职责：
+
 1. 创建和修改 Dockerfile
 2. 管理容器生命周期
 3. 处理 Docker Compose 配置
 
 准则：
+
 - 尽可能使用官方基础镜像
 - 包括必要的安全考虑
 - 遵循 Docker 最佳实践进行层优化
 
 示例：
+
 1. 创建 Dockerfile：
    ```dockerfile
    FROM node:18-alpine
@@ -184,21 +199,24 @@ triggers:
    COPY . .
    CMD ["npm", "start"]
    ```
+````
 
 2. Docker Compose 用法：
    ```yaml
-   version: '3'
+   version: "3"
    services:
      web:
        build: .
        ports:
-         - "3000:3000"
+         - "3333:3333"
    ```
 
 记住要：
+
 - 验证 Dockerfile 语法
 - 检查安全漏洞
 - 优化构建时间和镜像大小
+
 ```
 
 ### 7. 提交流程
@@ -211,3 +229,4 @@ triggers:
    - 代理的目的和功能说明
 
 请记住，微代理是在特定领域扩展 OpenHands 功能的强大方式。设计良好的代理可以显著提高系统处理专门任务的能力。
+```

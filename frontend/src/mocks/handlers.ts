@@ -77,7 +77,7 @@ const openHandsHandlers = [
   ),
 
   http.get(
-    "http://localhost:3001/api/conversations/:conversationId/list-files",
+    "http://localhost:3334/api/conversations/:conversationId/list-files",
     async ({ params }) => {
       await delay();
 
@@ -97,11 +97,11 @@ const openHandsHandlers = [
     },
   ),
 
-  http.post("http://localhost:3001/api/save-file", () =>
+  http.post("http://localhost:3334/api/save-file", () =>
     HttpResponse.json(null, { status: 200 }),
   ),
 
-  http.get("http://localhost:3001/api/select-file", async ({ request }) => {
+  http.get("http://localhost:3334/api/select-file", async ({ request }) => {
     await delay();
 
     const token = request.headers
@@ -123,7 +123,7 @@ const openHandsHandlers = [
     return HttpResponse.json(null, { status: 404 });
   }),
 
-  http.post("http://localhost:3001/api/submit-feedback", async () => {
+  http.post("http://localhost:3334/api/submit-feedback", async () => {
     await delay(1200);
 
     return HttpResponse.json({
@@ -153,7 +153,7 @@ export const handlers = [
 
     return HttpResponse.json(user);
   }),
-  http.post("http://localhost:3001/api/submit-feedback", async () =>
+  http.post("http://localhost:3334/api/submit-feedback", async () =>
     HttpResponse.json({ statusCode: 200 }, { status: 200 }),
   ),
   http.post("https://us.i.posthog.com/e", async () =>

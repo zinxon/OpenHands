@@ -27,7 +27,7 @@ Ensuite, construisez votre image docker avec le nom de votre choix. Par exemple 
 docker build -t image_personnalisée .
 ```
 
-Cela produira une nouvelle image appelée ```image_personnalisée``` qui sera disponible dans Docker Engine.
+Cela produira une nouvelle image appelée `image_personnalisée` qui sera disponible dans Docker Engine.
 
 > Remarque: Dans la configuration décrite ici, OpenHands va fonctionner en tant que utilisateur "openhands" à l'intérieur du sandbox et donc tous les packages installés via le Dockerfile seront disponibles pour tous les utilisateurs sur le système, pas seulement root.
 >
@@ -35,8 +35,8 @@ Cela produira une nouvelle image appelée ```image_personnalisée``` qui sera di
 
 ## Spécifiez votre image personnalisée dans le fichier config.toml
 
-La configuration OpenHands se fait via le fichier de niveau supérieur ```config.toml``` .
-Créez un fichier ```config.toml``` dans le répertoire OpenHands et entrez ces contenus:
+La configuration OpenHands se fait via le fichier de niveau supérieur `config.toml` .
+Créez un fichier `config.toml` dans le répertoire OpenHands et entrez ces contenus:
 
 ```toml
 [core]
@@ -45,15 +45,15 @@ run_as_openhands=true
 sandbox_base_container_image="image_personnalisée"
 ```
 
-> Assurez-vous que ```sandbox_base_container_image``` est défini sur le nom de votre image personnalisée précédente.
+> Assurez-vous que `sandbox_base_container_image` est défini sur le nom de votre image personnalisée précédente.
 
 ## Exécution
 
-Exécutez OpenHands en exécutant ```make run``` dans le répertoire racine.
+Exécutez OpenHands en exécutant `make run` dans le répertoire racine.
 
-Naviguez vers ```localhost:3001``` et vérifiez si vos dépendances souhaitées sont disponibles.
+Naviguez vers `localhost:3334` et vérifiez si vos dépendances souhaitées sont disponibles.
 
-Dans le cas de l'exemple ci-dessus, la commande ```node -v``` dans la console produit ```v18.19.1```
+Dans le cas de l'exemple ci-dessus, la commande `node -v` dans la console produit `v18.19.1`
 
 Félicitations !
 
@@ -61,7 +61,7 @@ Félicitations !
 
 Lorsqu'une image personnalisée est utilisée pour la première fois, elle ne sera pas trouvée et donc elle sera construite (à l'exécution ultérieure, l'image construite sera trouvée et renvoyée).
 
-L'image personnalisée est construite avec [_build_sandbox_image()](https://github.com/All-Hands-AI/OpenHands/blob/main/openhands/runtime/docker/image_agnostic_util.py#L29), qui crée un fichier docker en utilisant votre image personnalisée comme base et configure ensuite l'environnement pour OpenHands, comme ceci:
+L'image personnalisée est construite avec [\_build_sandbox_image()](https://github.com/All-Hands-AI/OpenHands/blob/main/openhands/runtime/docker/image_agnostic_util.py#L29), qui crée un fichier docker en utilisant votre image personnalisée comme base et configure ensuite l'environnement pour OpenHands, comme ceci:
 
 ```python
 dockerfile_content = (
@@ -77,11 +77,12 @@ dockerfile_content = (
     ).strip()
 ```
 
-> Remarque: Le nom de l'image est modifié via [_get_new_image_name()](https://github.com/All-Hands-AI/OpenHands/blob/main/openhands/runtime/docker/image_agnostic_util.py#L63) et c'est ce nom modifié qui sera recherché lors des exécutions ultérieures.
+> Remarque: Le nom de l'image est modifié via [\_get_new_image_name()](https://github.com/All-Hands-AI/OpenHands/blob/main/openhands/runtime/docker/image_agnostic_util.py#L63) et c'est ce nom modifié qui sera recherché lors des exécutions ultérieures.
 
 ## Dépannage / Erreurs
 
-### Erreur: ```useradd: UID 1000 est non unique```
+### Erreur: `useradd: UID 1000 est non unique`
+
 Si vous voyez cette erreur dans la sortie de la console, il s'agit du fait que OpenHands essaie de créer le utilisateur openhands dans le sandbox avec un ID d'utilisateur de 1000, cependant cet ID d'utilisateur est déjà utilisé dans l'image (pour une raison inconnue). Pour résoudre ce problème, changez la valeur du champ sandbox_user_id dans le fichier config.toml en une valeur différente:
 
 ```toml
@@ -94,7 +95,7 @@ sandbox_user_id="1001"
 
 ### Erreurs de port d'utilisation
 
-Si vous voyez un message d'erreur indiquant que le port est utilisé ou indisponible, essayez de supprimer toutes les containers docker en cours d'exécution (exécutez `docker ps` et `docker rm` des containers concernés) puis ré-exécutez ```make run```
+Si vous voyez un message d'erreur indiquant que le port est utilisé ou indisponible, essayez de supprimer toutes les containers docker en cours d'exécution (exécutez `docker ps` et `docker rm` des containers concernés) puis ré-exécutez `make run`
 
 ## Discuter
 

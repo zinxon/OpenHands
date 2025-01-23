@@ -2,9 +2,9 @@
 
 ## 系统要求
 
-* Docker 版本 26.0.0+ 或 Docker Desktop 4.31.0+。
-* 你必须使用 Linux 或 Mac OS。
-  * 如果你使用的是 Windows，你必须使用 [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)。
+- Docker 版本 26.0.0+ 或 Docker Desktop 4.31.0+。
+- 你必须使用 Linux 或 Mac OS。
+  - 如果你使用的是 Windows，你必须使用 [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)。
 
 ## 启动应用
 
@@ -17,7 +17,7 @@ docker run -it --rm --pull=always \
     -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.21-nikolaik \
     -e LOG_ALL_EVENTS=true \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -p 3000:3000 \
+    -p 3333:3333 \
     --add-host host.docker.internal:host-gateway \
     --name openhands-app \
     docker.all-hands.dev/all-hands-ai/openhands:0.21
@@ -27,7 +27,7 @@ docker run -it --rm --pull=always \
 
 ## 设置
 
-运行上述命令后，你可以在 [http://localhost:3000](http://localhost:3000) 找到正在运行的 OpenHands。
+运行上述命令后，你可以在 [http://localhost:3333](http://localhost:3333) 找到正在运行的 OpenHands。
 
 启动 OpenHands 后，你会看到一个设置模态框。你**必须**选择一个 `LLM Provider` 和 `LLM Model`，并输入相应的 `API Key`。
 这些设置可以随时通过选择 UI 中的 `Settings` 按钮（齿轮图标）进行更改。
@@ -35,7 +35,7 @@ docker run -it --rm --pull=always \
 如果所需的 `LLM Model` 不在列表中，你可以切换 `Advanced Options`，并在 `Custom Model` 文本框中使用正确的前缀手动输入。
 `Advanced Options` 还允许你在需要时指定 `Base URL`。
 
-<div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+<div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
   <img src="/img/settings-screenshot.png" alt="settings-modal" width="340" />
   <img src="/img/settings-advanced.png" alt="settings-modal" width="335" />
 </div>
@@ -43,6 +43,7 @@ docker run -it --rm --pull=always \
 ## 版本
 
 上述命令拉取最新的 OpenHands 稳定版本。你还有其他选择：
+
 - 对于特定版本，使用 `docker.all-hands.dev/all-hands-ai/openhands:$VERSION`，将 $VERSION 替换为版本号。
 - 我们使用语义化版本，并发布主要版本、次要版本和补丁标签。因此，`0.9` 将自动指向最新的 `0.9.x` 版本，而 `0` 将指向最新的 `0.x.x` 版本。
 - 对于最新的开发版本，你可以使用 `docker.all-hands.dev/all-hands-ai/openhands:main`。此版本不稳定，仅建议用于测试或开发目的。

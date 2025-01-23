@@ -3,6 +3,7 @@
 默认的 OpenHands 沙箱包含一个[最小化 ubuntu 配置](https://github.com/All-Hands-AI/OpenHands/blob/main/containers/sandbox/Dockerfile)。您的应用场景可能需要在默认状态下安装额外的软件。本指南将教您如何通过使用自定义 Docker 映像来实现这一目标。
 
 目前提供两种实现方案：
+
 1. 从 Docker Hub 拉取已有镜像。例如，如果您想安装 `nodejs` ，您可以通过使用 `node:20` 镜像来实现。
 2. 创建并使用您自定义 Docker 镜像。
 
@@ -44,7 +45,7 @@ RUN apt-get install -y nodejs
 docker build -t custom_image .
 ```
 
-这将生成一个名为 ```custom_image``` 的新映像，并使其可用于 Docker 服务引擎。
+这将生成一个名为 `custom_image` 的新映像，并使其可用于 Docker 服务引擎。
 
 > 注意：在本文档描述的配置中，OpenHands 将在沙箱内部以“openhands”用户身份运行。因此，通过 Dockerfile 安装的所有包应可供系统上的所有用户使用，而不仅仅是 root 用户。
 
@@ -52,7 +53,7 @@ docker build -t custom_image .
 
 ## 在 config.toml 文件中指定自定义映像
 
-在 OpenHands 的配置通过顶层的 `config.toml` 文件发生。在 OpenHands 目录下创建一个 ```config.toml``` 文件，并输入以下内容：
+在 OpenHands 的配置通过顶层的 `config.toml` 文件发生。在 OpenHands 目录下创建一个 `config.toml` 文件，并输入以下内容：
 
 ```
 [core]
@@ -62,14 +63,15 @@ sandbox_base_container_image="custom_image"
 ```
 
 对于 `sandbox_base_container_image` 的值, 您可以选择以下任意一项：
+
 1. 在上一步中您构建的自定义镜像的名称（例如，`“custom_image”`）
 2. 从 Docker Hub 拉取的镜像（例如，`“node:20”`，如果你需要一个预装 `Node.js` 的沙箱环境）
 
 ## 运行
 
-在顶层目录下通过执行 ```make run``` 运行 OpenHands。
+在顶层目录下通过执行 `make run` 运行 OpenHands。
 
-导航至 ```localhost:3001``` 并检查所需依赖是否可用。
+导航至 `localhost:3334` 并检查所需依赖是否可用。
 
 在上述示例的情况下，终端中运行 `node -v` 会输出 `v20.15.0`。
 
@@ -81,7 +83,7 @@ sandbox_base_container_image="custom_image"
 
 ## 故障排除 / 错误
 
-### 错误：```useradd: UID 1000 is not unique```
+### 错误：`useradd: UID 1000 is not unique`
 
 如果在控制台输出中看到此错误，说明 OpenHands 尝试在沙箱中以 UID 1000 创建 openhands 用户，但该 UID 已经被映像中的其他部分使用（不知何故）。要解决这个问题，请更改 config.toml 文件中的 sandbox_user_id 字段为不同的值：
 
@@ -95,7 +97,7 @@ sandbox_user_id="1001"
 
 ### 端口使用错误
 
-如果您遇到端口被占用或不可用的错误提示，可以尝试先用`docker ps`命令列出所有运行中的 Docker 容器，然后使用`docker rm`命令删除相关容器，最后再重新执行```make run```命令。
+如果您遇到端口被占用或不可用的错误提示，可以尝试先用`docker ps`命令列出所有运行中的 Docker 容器，然后使用`docker rm`命令删除相关容器，最后再重新执行`make run`命令。
 
 ## 讨论
 

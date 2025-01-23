@@ -44,7 +44,7 @@ We use `msw` to mock the backend API. To start the application with the mocked b
 npm run dev
 ```
 
-This will start the application in development mode. Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+This will start the application in development mode. Open [http://localhost:3334](http://localhost:3334) to view it in the browser.
 
 **NOTE: The backend is _partially_ mocked using `msw`. Therefore, some features may not work as they would with the actual backend.**
 
@@ -70,7 +70,7 @@ make start-backend
 cd frontend && npm run build
 
 # Serve the frontend
-npm start -- --port 3001
+npm start -- --port 3334
 ```
 
 ### Environment Variables

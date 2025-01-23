@@ -8,7 +8,7 @@ OpenHands 提供了一个用户友好的图形用户界面（GUI）模式，用�
 
 1. 按照[安装](../installation)指南中的说明安装 OpenHands。
 
-2. 运行命令后，通过 [http://localhost:3000](http://localhost:3000) 访问 OpenHands。
+2. 运行命令后，通过 [http://localhost:3333](http://localhost:3333) 访问 OpenHands。
 
 ## 与 GUI 交互
 
@@ -29,6 +29,7 @@ OpenHands 提供了一个用户友好的图形用户界面（GUI）模式，用�
 #### 设置本地 GitHub Token
 
 1. **生成个人访问令牌（PAT）**：
+
    - 转到 GitHub 设置 > 开发者设置 > 个人访问令牌 > 令牌（经典）
    - 点击"生成新令牌（经典）"
    - 所需范围：
@@ -47,6 +48,7 @@ OpenHands 提供了一个用户友好的图形用户界面（GUI）模式，用�
 如果您使用组织仓库，可能需要额外的设置：
 
 1. **检查组织要求**：
+
    - 组织管理员可能会强制执行特定的令牌策略
    - 某些组织要求使用启用 SSO 的令牌
    - 查看您组织的[令牌策略设置](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization)
@@ -62,6 +64,7 @@ OpenHands 提供了一个用户友好的图形用户界面（GUI）模式，用�
 在在线模式下使用 OpenHands 时，GitHub OAuth 流程：
 
 1. 请求以下权限：
+
    - 仓库访问（读/写）
    - 工作流管理
    - 组织读取访问
@@ -77,12 +80,14 @@ OpenHands 提供了一个用户友好的图形用户界面（GUI）模式，用�
 常见问题和解决方案：
 
 1. **令牌无法识别**：
+
    - 确保令牌已正确保存在设置中
    - 检查令牌是否已过期
    - 验证令牌是否具有所需的范围
    - 尝试重新生成令牌
 
 2. **组织访问被拒绝**：
+
    - 检查是否需要但未启用 SSO
    - 验证组织成员资格
    - 如果令牌策略阻止访问，请联系组织管理员

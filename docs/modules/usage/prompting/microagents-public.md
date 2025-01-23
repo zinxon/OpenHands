@@ -7,6 +7,7 @@ They are defined in markdown files under the
 [`microagents/knowledge/`](https://github.com/All-Hands-AI/OpenHands/tree/main/microagents/knowledge) directory.
 
 Public microagents:
+
 - Monitor incoming commands for their trigger words.
 - Activate when relevant triggers are detected.
 - Apply their specialized knowledge and capabilities.
@@ -18,16 +19,19 @@ For more information about specific microagents, refer to their individual docum
 the [`microagents/knowledge/`](https://github.com/All-Hands-AI/OpenHands/tree/main/microagents/knowledge/) directory.
 
 ### GitHub Agent
+
 **File**: `github.md`
 **Triggers**: `github`, `git`
 
 The GitHub agent specializes in GitHub API interactions and repository management. It:
+
 - Has access to a `GITHUB_TOKEN` for API authentication.
 - Follows strict guidelines for repository interactions.
 - Handles branch management and pull requests.
 - Uses the GitHub API instead of web browser interactions.
 
 Key features:
+
 - Branch protection (prevents direct pushes to main/master)
 - Automated PR creation
 - Git configuration management
@@ -42,10 +46,12 @@ git push origin feature-branch
 ```
 
 ### NPM Agent
+
 **File**: `npm.md`
 **Triggers**: `npm`
 
 Specializes in handling npm package management with specific focus on:
+
 - Non-interactive shell operations.
 - Automated confirmation handling using Unix 'yes' command.
 - Package installation automation.
@@ -74,6 +80,7 @@ You can create your own public microagents by adding new markdown files to the
 #### 1. Plan the Public Microagent
 
 Before creating a public microagent, consider:
+
 - What specific problem or use case will it address?
 - What unique capabilities or knowledge should it have?
 - What trigger words make sense for activating it?
@@ -97,6 +104,7 @@ and the required specialized guidelines while following the [best practices abov
 #### 4. Submission Process
 
 Submit a pull request with:
+
 - The new microagent file.
 - Updated documentation if needed.
 - Description of the agent's purpose and capabilities.
@@ -110,27 +118,30 @@ Here's a template for a new microagent:
 name: docker
 agent: CodeActAgent
 triggers:
-- docker
-- container
+  - docker
+  - container
 ---
 
 You are responsible for Docker container management and Dockerfile creation.
 
 Key responsibilities:
+
 1. Create and modify Dockerfiles
 2. Manage container lifecycle
 3. Handle Docker Compose configurations
 
 Guidelines:
+
 - Always use official base images when possible
 - Include necessary security considerations
 - Follow Docker best practices for layer optimization
 
 Examples:
+
 1. Creating a Dockerfile:
    FROM node:18-alpine
    WORKDIR /app
-   COPY package*.json ./
+   COPY package\*.json ./
    RUN npm install
    COPY . .
    CMD ["npm", "start"]
@@ -138,12 +149,12 @@ Examples:
 2. Docker Compose usage:
    version: '3'
    services:
-     web:
-       build: .
-       ports:
-         - "3000:3000"
+   web:
+   build: .
+   ports: - "3333:3333"
 
 Remember to:
+
 - Validate Dockerfile syntax
 - Check for security vulnerabilities
 - Optimize for build time and image size

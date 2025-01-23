@@ -8,7 +8,7 @@ This mode offers an intuitive way to set up the environment, manage settings, an
 ## Installation and Setup
 
 1. Follow the instructions in the [Installation](../installation) guide to install OpenHands.
-2. After running the command, access OpenHands at [http://localhost:3000](http://localhost:3000).
+2. After running the command, access OpenHands at [http://localhost:3333](http://localhost:3333).
 
 ## Interacting with the GUI
 
@@ -29,6 +29,7 @@ OpenHands automatically exports a `GITHUB_TOKEN` to the shell environment if it 
 #### Setting Up a Local GitHub Token
 
 1. **Generate a Personal Access Token (PAT)**:
+
    - Go to GitHub Settings > Developer Settings > Personal Access Tokens > Tokens (classic).
    - Click "Generate new token (classic)".
    - Required scopes:
@@ -47,6 +48,7 @@ OpenHands automatically exports a `GITHUB_TOKEN` to the shell environment if it 
 If you're working with organizational repositories, additional setup may be required:
 
 1. **Check Organization Requirements**:
+
    - Organization admins may enforce specific token policies.
    - Some organizations require tokens to be created with SSO enabled.
    - Review your organization's [token policy settings](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization).
@@ -62,6 +64,7 @@ If you're working with organizational repositories, additional setup may be requ
 When using OpenHands in online mode, the GitHub OAuth flow:
 
 1. Requests the following permissions:
+
    - Repository access (read/write)
    - Workflow management
    - Organization read access
@@ -77,21 +80,23 @@ When using OpenHands in online mode, the GitHub OAuth flow:
 Common issues and solutions:
 
 - **Token Not Recognized**:
-   - Ensure the token is properly saved in settings.
-   - Check that the token hasn't expired.
-   - Verify the token has the required scopes.
-   - Try regenerating the token.
+
+  - Ensure the token is properly saved in settings.
+  - Check that the token hasn't expired.
+  - Verify the token has the required scopes.
+  - Try regenerating the token.
 
 - **Organization Access Denied**:
-   - Check if SSO is required but not enabled.
-   - Verify organization membership.
-   - Contact organization admin if token policies are blocking access.
+
+  - Check if SSO is required but not enabled.
+  - Verify organization membership.
+  - Contact organization admin if token policies are blocking access.
 
 - **Verifying Token Works**:
-   - The app will show a green checkmark if the token is valid.
-   - Try accessing a repository to confirm permissions.
-   - Check the browser console for any error messages.
-   - Use the "Test Connection" button in settings if available.
+  - The app will show a green checkmark if the token is valid.
+  - Try accessing a repository to confirm permissions.
+  - Check the browser console for any error messages.
+  - Use the "Test Connection" button in settings if available.
 
 ### Advanced Settings
 

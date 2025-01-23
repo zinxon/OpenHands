@@ -31,6 +31,7 @@ starcoder2:latest               f67ae0f64584    1.7 GB  19 hours ago
 ## Run OpenHands with Docker
 
 ### Start OpenHands
+
 Use the instructions [here](../getting-started) to start OpenHands using Docker.
 But when running `docker run`, you'll need to add a few more arguments:
 
@@ -44,14 +45,13 @@ docker run # ...
 LLM_OLLAMA_BASE_URL is optional. If you set it, it will be used to show
 the available installed models in the UI.
 
-
 ### Configure the Web Application
 
 When running `openhands`, you'll need to set the following in the OpenHands UI through the Settings:
+
 - the model to "ollama/&lt;model-name&gt;"
 - the base url to `http://host.docker.internal:11434`
 - the API key is optional, you can use any string, such as `ollama`.
-
 
 ## Run OpenHands in Development Mode
 
@@ -70,7 +70,7 @@ ollama_base_url="http://localhost:11434"
 
 ```
 
-Done! Now you can start OpenHands by: `make run`. You now should be able to connect to `http://localhost:3000/`
+Done! Now you can start OpenHands by: `make run`. You now should be able to connect to `http://localhost:3333/`
 
 ### Configure the Web Application
 
@@ -139,17 +139,17 @@ docker ps # get list of running docker containers, for most accurate test choose
 docker exec [CONTAINER ID] curl http://host.docker.internal:11434/api/generate -d '{"model":"[NAME]","prompt":"hi"}'
 ```
 
-
 # Local LLM with LM Studio
 
 Steps to set up LM Studio:
+
 1. Open LM Studio
 2. Go to the Local Server tab.
 3. Click the "Start Server" button.
 4. Select the model you want to use from the dropdown.
 
-
 Set the following configs:
+
 ```bash
 LLM_MODEL="openai/lmstudio"
 LLM_BASE_URL="http://localhost:1234/v1"
@@ -166,7 +166,7 @@ docker run # ...
     # ...
 ```
 
-You should now be able to connect to `http://localhost:3000/`
+You should now be able to connect to `http://localhost:3333/`
 
 In the development environment, you can set the following configs in the `config.toml` file:
 
@@ -180,7 +180,7 @@ base_url="http://localhost:1234/v1"
 custom_llm_provider="openai"
 ```
 
-Done! Now you can start OpenHands by: `make run` without Docker. You now should be able to connect to `http://localhost:3000/`
+Done! Now you can start OpenHands by: `make run` without Docker. You now should be able to connect to `http://localhost:3333/`
 
 # Note
 

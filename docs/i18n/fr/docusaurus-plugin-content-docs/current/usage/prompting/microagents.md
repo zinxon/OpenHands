@@ -1,5 +1,3 @@
-
-
 # Micro-Agents
 
 OpenHands utilise des micro-agents spécialisés pour gérer efficacement des tâches et des contextes spécifiques. Ces micro-agents sont de petits composants ciblés qui fournissent un comportement et des connaissances spécialisés pour des scénarios particuliers.
@@ -16,26 +14,31 @@ Les micro-agents sont définis dans des fichiers markdown sous le répertoire `o
 ## Micro-Agents Disponibles
 
 ### Agent GitHub
+
 **Fichier** : `github.md`
 **Déclencheurs** : `github`, `git`
 
 L'agent GitHub se spécialise dans les interactions avec l'API GitHub et la gestion des dépôts. Il :
+
 - A accès à un `GITHUB_TOKEN` pour l'authentification API
 - Suit des directives strictes pour les interactions avec les dépôts
 - Gère les branches et les pull requests
 - Utilise l'API GitHub au lieu des interactions avec le navigateur web
 
 Fonctionnalités clés :
+
 - Protection des branches (empêche les push directs vers main/master)
 - Création automatisée de PR
 - Gestion de la configuration Git
 - Approche API-first pour les opérations GitHub
 
 ### Agent NPM
+
 **Fichier** : `npm.md`
 **Déclencheurs** : `npm`
 
 Se spécialise dans la gestion des packages npm avec un focus spécifique sur :
+
 - Les opérations shell non interactives
 - La gestion automatisée des confirmations en utilisant la commande Unix 'yes'
 - L'automatisation de l'installation des packages
@@ -49,8 +52,8 @@ Vous pouvez créer vos propres micro-agents en ajoutant de nouveaux fichiers mar
 name: nom_de_l_agent
 agent: CodeActAgent
 triggers:
-- mot_declencheur1
-- mot_declencheur2
+  - mot_declencheur1
+  - mot_declencheur2
 ---
 
 Instructions et capacités pour le micro-agent...
@@ -68,6 +71,7 @@ Lorsque vous travaillez avec des micro-agents :
 ## Intégration
 
 Les micro-agents sont automatiquement intégrés dans le workflow d'OpenHands. Ils :
+
 - Surveillent les commandes entrantes pour détecter leurs mots-clés déclencheurs
 - S'activent lorsque des déclencheurs pertinents sont détectés
 - Appliquent leurs connaissances et capacités spécialisées
@@ -94,6 +98,7 @@ Pour contribuer un nouveau micro-agent à OpenHands, suivez ces directives :
 ### 1. Planification de votre Micro-Agent
 
 Avant de créer un micro-agent, considérez :
+
 - Quel problème ou cas d'utilisation spécifique va-t-il adresser ?
 - Quelles capacités ou connaissances uniques devrait-il avoir ?
 - Quels mots-clés déclencheurs ont du sens pour l'activer ?
@@ -108,25 +113,29 @@ Créez un nouveau fichier markdown dans `openhands/agenthub/codeact_agent/micro/
 Votre fichier de micro-agent doit inclure :
 
 1. **Front Matter** : Métadonnées YAML au début du fichier :
+
 ```markdown
 ---
 name: nom_de_votre_agent
 agent: CodeActAgent
 triggers:
-- mot_declencheur1
-- mot_declencheur2
+  - mot_declencheur1
+  - mot_declencheur2
 ---
 ```
 
 2. **Instructions** : Directives claires et spécifiques pour le comportement de l'agent :
+
 ```markdown
 Vous êtes responsable de [tâche/domaine spécifique].
 
 Responsabilités clés :
+
 1. [Responsabilité 1]
 2. [Responsabilité 2]
 
 Directives :
+
 - [Directive 1]
 - [Directive 2]
 
@@ -146,6 +155,7 @@ Exemples d'utilisation :
 ### 5. Tester votre Micro-Agent
 
 Avant de soumettre :
+
 1. Testez l'agent avec divers prompts
 2. Vérifiez que les mots-clés déclencheurs activent correctement l'agent
 3. Assurez-vous que les instructions sont claires et complètes
@@ -155,28 +165,31 @@ Avant de soumettre :
 
 Voici un modèle pour un nouveau micro-agent :
 
-```markdown
+````markdown
 ---
 name: docker
 agent: CodeActAgent
 triggers:
-- docker
-- conteneur
+  - docker
+  - conteneur
 ---
 
 Vous êtes responsable de la gestion des conteneurs Docker et de la création de Dockerfiles.
 
 Responsabilités clés :
+
 1. Créer et modifier des Dockerfiles
 2. Gérer le cycle de vie des conteneurs
 3. Gérer les configurations Docker Compose
 
 Directives :
+
 - Utilisez toujours des images de base officielles lorsque possible
 - Incluez les considérations de sécurité nécessaires
 - Suivez les bonnes pratiques Docker pour l'optimisation des couches
 
 Exemples :
+
 1. Créer un Dockerfile :
    ```dockerfile
    FROM node:18-alpine
@@ -186,21 +199,24 @@ Exemples :
    COPY . .
    CMD ["npm", "start"]
    ```
+````
 
 2. Utilisation de Docker Compose :
    ```yaml
-   version: '3'
+   version: "3"
    services:
      web:
        build: .
        ports:
-         - "3000:3000"
+         - "3333:3333"
    ```
 
 N'oubliez pas de :
+
 - Valider la syntaxe du Dockerfile
 - Vérifier les vulnérabilités de sécurité
 - Optimiser le temps de build et la taille de l'image
+
 ```
 
 ### 7. Processus de soumission
@@ -213,3 +229,4 @@ N'oubliez pas de :
    - La description du but et des capacités de l'agent
 
 N'oubliez pas que les micro-agents sont un moyen puissant d'étendre les capacités d'OpenHands dans des domaines spécifiques. Des agents bien conçus peuvent améliorer significativement la capacité du système à gérer des tâches spécialisées.
+```

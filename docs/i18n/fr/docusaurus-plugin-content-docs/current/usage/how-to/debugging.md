@@ -1,5 +1,3 @@
-
-
 # Débogage
 
 Ce qui suit est destiné à servir d'introduction au débogage d'OpenHands à des fins de développement.
@@ -30,7 +28,7 @@ Le `launch.json` suivant permettra de déboguer les éléments agent, contrôleu
                 "--reload-exclude",
                 "${workspaceFolder}/workspace",
                 "--port",
-                "3000"
+                "3333"
             ],
             "justMyCode": false
         }

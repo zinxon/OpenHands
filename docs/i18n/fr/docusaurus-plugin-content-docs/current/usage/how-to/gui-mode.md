@@ -1,5 +1,3 @@
-
-
 # Mode Interface Graphique
 
 ## Introduction
@@ -10,7 +8,7 @@ OpenHands fournit un mode Interface Graphique (GUI) convivial pour interagir ave
 
 1. Suivez les instructions du guide [Installation](../installation) pour installer OpenHands.
 
-2. Après avoir exécuté la commande, accédez à OpenHands à l'adresse [http://localhost:3000](http://localhost:3000).
+2. Après avoir exécuté la commande, accédez à OpenHands à l'adresse [http://localhost:3333](http://localhost:3333).
 
 ## Interagir avec l'Interface Graphique
 
@@ -31,6 +29,7 @@ OpenHands exporte automatiquement un `GITHUB_TOKEN` vers l'environnement shell s
 #### Configuration d'un Jeton GitHub Local
 
 1. **Générer un Personal Access Token (PAT)** :
+
    - Allez dans Paramètres GitHub > Paramètres développeur > Personal Access Tokens > Tokens (classique)
    - Cliquez sur "Générer un nouveau jeton (classique)"
    - Portées requises :
@@ -49,6 +48,7 @@ OpenHands exporte automatiquement un `GITHUB_TOKEN` vers l'environnement shell s
 Si vous travaillez avec des dépôts organisationnels, une configuration supplémentaire peut être nécessaire :
 
 1. **Vérifier les Exigences de l'Organisation** :
+
    - Les administrateurs de l'organisation peuvent appliquer des politiques de jetons spécifiques
    - Certaines organisations exigent que les jetons soient créés avec SSO activé
    - Consultez les [paramètres de politique de jetons](https://docs.github.com/en/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization) de votre organisation
@@ -64,6 +64,7 @@ Si vous travaillez avec des dépôts organisationnels, une configuration supplé
 Lorsque vous utilisez OpenHands en mode en ligne, le flux OAuth GitHub :
 
 1. Demande les autorisations suivantes :
+
    - Accès au dépôt (lecture/écriture)
    - Gestion des workflows
    - Accès en lecture à l'organisation
@@ -79,12 +80,14 @@ Lorsque vous utilisez OpenHands en mode en ligne, le flux OAuth GitHub :
 Problèmes courants et solutions :
 
 1. **Jeton Non Reconnu** :
+
    - Assurez-vous que le jeton est correctement enregistré dans les paramètres
    - Vérifiez que le jeton n'a pas expiré
    - Vérifiez que le jeton a les portées requises
    - Essayez de régénérer le jeton
 
 2. **Accès à l'Organisation Refusé** :
+
    - Vérifiez si SSO est requis mais non activé
    - Vérifiez l'appartenance à l'organisation
    - Contactez l'administrateur de l'organisation si les politiques de jetons bloquent l'accès

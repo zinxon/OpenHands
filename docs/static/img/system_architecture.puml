@@ -40,7 +40,7 @@ node frontend as frontend{
 
 
 
-    interface "HTTP (:3001)" as HTTP
+    interface "HTTP (:3334)" as HTTP
     HTTP - App
 
 }
@@ -50,7 +50,7 @@ node backend{
         component Server
 
         'defined in server/server.py, port is defined at startup with uvicorn
-        interface "Client WS\n(:3000/ws)" as client_socket
+        interface "Client WS\n(:3333/ws)" as client_socket
         client_socket - Server
 
 

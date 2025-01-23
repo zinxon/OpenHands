@@ -31,7 +31,7 @@ async def get_litellm_models() -> list[str]:
 
     To get the models:
     ```sh
-    curl http://localhost:3000/api/litellm-models
+    curl http://localhost:3333/api/litellm-models
     ```
 
     Returns:
@@ -81,7 +81,7 @@ async def get_agents():
 
     To get the agents:
     ```sh
-    curl http://localhost:3000/api/agents
+    curl http://localhost:3333/api/agents
     ```
 
     Returns:
@@ -97,7 +97,7 @@ async def get_security_analyzers():
 
     To get the security analyzers:
     ```sh
-    curl http://localhost:3000/api/security-analyzers
+    curl http://localhost:3333/api/security-analyzers
     ```
 
     Returns:

@@ -1,5 +1,3 @@
-
-
 # LLM local avec Ollama
 
 :::warning
@@ -32,6 +30,7 @@ starcoder2:latest               f67ae0f64584    1.7 GB  19 hours ago
 ## Exécuter OpenHands avec Docker
 
 ### Démarrer OpenHands
+
 Utilisez les instructions [ici](../getting-started) pour démarrer OpenHands en utilisant Docker.
 Mais lorsque vous exécutez `docker run`, vous devrez ajouter quelques arguments supplémentaires :
 
@@ -45,14 +44,13 @@ docker run # ...
 LLM_OLLAMA_BASE_URL est optionnel. Si vous le définissez, il sera utilisé pour afficher
 les modèles installés disponibles dans l'interface utilisateur.
 
-
 ### Configurer l'application Web
 
 Lors de l'exécution d'`openhands`, vous devrez définir les éléments suivants dans l'interface utilisateur d'OpenHands via les paramètres :
+
 - le modèle à "ollama/&lt;nom-du-modèle&gt;"
 - l'URL de base à `http://host.docker.internal:11434`
 - la clé API est optionnelle, vous pouvez utiliser n'importe quelle chaîne, comme `ollama`.
-
 
 ## Exécuter OpenHands en mode développement
 
@@ -71,7 +69,7 @@ ollama_base_url="http://localhost:11434"
 
 ```
 
-Terminé ! Vous pouvez maintenant démarrer OpenHands avec : `make run`. Vous devriez maintenant pouvoir vous connecter à `http://localhost:3000/`
+Terminé ! Vous pouvez maintenant démarrer OpenHands avec : `make run`. Vous devriez maintenant pouvoir vous connecter à `http://localhost:3333/`
 
 ### Configurer l'application Web
 
@@ -140,17 +138,17 @@ docker ps # obtenir la liste des conteneurs docker en cours d'exécution, pour u
 docker exec [ID CONTENEUR] curl http://host.docker.internal:11434/api/generate -d '{"model":"[NOM]","prompt":"hi"}'
 ```
 
-
 # LLM local avec LM Studio
 
 Étapes pour configurer LM Studio :
+
 1. Ouvrez LM Studio
 2. Allez dans l'onglet Serveur local.
 3. Cliquez sur le bouton "Démarrer le serveur".
 4. Sélectionnez le modèle que vous souhaitez utiliser dans la liste déroulante.
 
-
 Définissez les configurations suivantes :
+
 ```bash
 LLM_MODEL="openai/lmstudio"
 LLM_BASE_URL="http://localhost:1234/v1"
@@ -167,7 +165,7 @@ docker run # ...
     # ...
 ```
 
-Vous devriez maintenant pouvoir vous connecter à `http://localhost:3000/`
+Vous devriez maintenant pouvoir vous connecter à `http://localhost:3333/`
 
 Dans l'environnement de développement, vous pouvez définir les configurations suivantes dans le fichier `config.toml` :
 
@@ -181,7 +179,7 @@ base_url="http://localhost:1234/v1"
 custom_llm_provider="openai"
 ```
 
-Terminé ! Vous pouvez maintenant démarrer OpenHands avec : `make run` sans Docker. Vous devriez maintenant pouvoir vous connecter à `http://localhost:3000/`
+Terminé ! Vous pouvez maintenant démarrer OpenHands avec : `make run` sans Docker. Vous devriez maintenant pouvoir vous connecter à `http://localhost:3333/`
 
 # Note
 
